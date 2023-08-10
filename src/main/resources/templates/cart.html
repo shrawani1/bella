@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Shrawani_Ecommerce_Website</title>
+    <link rel="stylesheet" th:href="@{/css/Indexstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+
+</head>
+<body>
+<section id="header">
+    <a href="#"><img src="/images/1.png" class="logo" alt=""></a>
+
+    <div>
+        <ul id="navbar">
+            <li><a href="/dashboard">Home</a></li>
+
+            <!--      <li><a href="#About">About Us</a></li>-->
+            <!--      <li><a href="#Contact">Contact Us</a></li>-->
+            <!--      <li><a href="cart.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>-->
+            <!--      <li><a href="signUp.html" th:text="${userDetail.fullname}"><i class="fa-solid fa-user" ></i></a></li>-->
+            <!--      <li><a href="shop.html">Sign In</a></li>-->
+            <!--      <form method="post" th:action="@{/logout}">-->
+            <!--        <input type="submit" value="logout" class="logout-button" />-->
+            <!--      </form>-->
+
+            <!--      <li><a th:href="@{/dashboard/aboutus}">About Us</a></li>-->
+            <!--      <li><a th:href="@{/user/contact}">Contact Us</a></li>-->
+            <li><a th:href="@{/cart}">Cart List</a></li>
+            <li><a th:href="@{/user/profile}" text="${userDetail.fullname}"><i class="fa-solid fa-user"></i></a></li>
+            <form method="post" th:action="@{/logout}">
+                <button type="submit" class="logout-button">
+                    Logout <i class="fa-solid fa-sign-out"></i>
+                </button>
+            </form>
+
+
+        </ul>
+    </div>
+    <div id="mobile">
+        <a href="cart.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+</section>
+
+<main>
+    <div class="order-table">
+        <form>
+            <table class="content-table">
+                <thead>
+                <tr>
+                    <!--            <th>Product</th>-->
+                    <th>Product Name</th>
+                    <th>Product Quantity</th>
+                    <th>product Price</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cartProduct:${cartItems}">
+                    <!--            <td>-->
+                    <!--              <img th:src="'data:EazyMart/png;base64,'+${products.imageBase64}" >-->
+                    <!--            </td>-->
+                    <td th:text="${cartProduct.getProducts().name}">Name of User</td>
+                    <td th:text="${cartProduct.getProducts().quantity}">Email of User</td>
+                    <td th:text="${cartProduct.getProducts().price}">Address of User</td>
+                    <td><a class="delete_button" th:href="@{~/cart/remove/}+${cartProduct.id}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</main>
+
+
+</body>
+</html>
+
